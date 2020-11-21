@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace jp\mcbe\fuyutsuki;
+namespace jp\mcbe\accessors;
 
 use function method_exists;
 use function property_exists;
@@ -10,7 +10,7 @@ use function ucfirst;
 
 /**
  * Trait AccessorsTrait
- * @package jp\mcbe\fuyutsuki
+ * @package jp\mcbe\accessors
  */
 trait AccessorsTrait {
 

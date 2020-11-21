@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace jp\mcbe\fuyutsuki;
+namespace jp\mcbe\accessors;
 
 use Exception;
 
 /**
  * Class PropertyNotFoundException
- * @package jp\mcbe\fuyutsuki
+ * @package jp\mcbe\accessors
  */
 class PropertyNotFoundException extends Exception {
 
