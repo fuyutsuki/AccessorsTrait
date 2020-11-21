@@ -1,0 +1,13 @@
+{
+    "name": "fuyutsuki/accessors-trait",
+    "description": "A composer library that provides kotlin-like getter/setter",
+    "type": "library",
+    "license": "NCSA",
+    "authors": [
+        {
+            "name": "yuko fuyutsuki",
+            "email": "yukofuyutsuki@gmail.com"
+        }
+    ],
+    "require": {}
+}
