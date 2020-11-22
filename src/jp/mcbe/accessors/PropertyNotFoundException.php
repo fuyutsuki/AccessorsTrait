@@ -13,7 +13,7 @@ use Exception;
 class PropertyNotFoundException extends Exception {
 
     public function __construct(object $class, string $propertyName) {
-        parent::__construct("class: " . get_class($class) . "->{$propertyName}", 800);
+        parent::__construct("property not found: " . get_class($class) . "->{$propertyName}");
     }
 
 }
