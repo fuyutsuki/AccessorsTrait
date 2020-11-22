@@ -35,8 +35,9 @@ trait AccessorsTrait {
         if (property_exists($this, $propertyName)) {
             return $this->$propertyName;
         }
-        if (get_parent_class($this)) {
-            return parent::__get($propertyName);
+        $parent = get_parent_class();
+        if ($parent !== false) {
+            return $parent::__get($propertyName);
         }
         throw new PropertyNotFoundException($this, $propertyName);
     }
@@ -56,8 +57,9 @@ trait AccessorsTrait {
             $this->$propertyName = $value;
             return;
         }
-        if (get_parent_class($this)) {
-            parent::__set($propertyName);
+        $parent = get_parent_class();
+        if ($parent !== false) {
+            $parent::__set($propertyName);
             return;
         }
         throw new PropertyNotFoundException($this, $propertyName);
