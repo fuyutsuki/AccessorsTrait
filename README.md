@@ -24,7 +24,7 @@ projects:
     icon: ""
     libs:
       - src: fuyutsuki/accessors-trait/accessors-trait
-        version: 0.1.0
+        version: 0.2.0
 ...
 ```
 
@@ -51,19 +51,8 @@ class Foobar {
 
   private string $str = "default str";
 
-  public function getStr(): string {
-    echo(__FUNCTION__ . PHP_EOL);
-    return $this->str;
-  }
-
-  public function isStr(): bool {
-    echo(__FUNCTION__ . PHP_EOL);
-    return is_string($this->str);
-  }
-
   public function setStr(string $value) {
-    echo(__FUNCTION__ . PHP_EOL);
-    $this->str = $value;
+    $this->str = "[prefix] " . $value;
   }
 
 }
@@ -71,15 +60,11 @@ class Foobar {
 $foobar = new Foobar();
 
 $foobar->str = "example";// calls setter
-echo($foobar->str);// calls getter
-var_dump($foobar->isStr());// sure, u can coding with normal grammar
+var_dump($foobar->str);// if no getter, simply return the value of the property
 
 /**
  * Output:
  * 
- * setStr
- * getStr
- * example
- * bool(true)
+ * string(7) "[prefix] example"
  */
 ```

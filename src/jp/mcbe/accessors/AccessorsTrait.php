@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace jp\mcbe\accessors;
 
+use function get_parent_class;
 use function method_exists;
 use function property_exists;
 use function ucfirst;
@@ -14,9 +15,9 @@ use function ucfirst;
  */
 trait AccessorsTrait {
 
-    private static string $getter = "get";
-    private static string $is = "is";
-    private static string $setter = "set";
+    private static string $_getter = "get";
+    private static string $_is = "is";
+    private static string $_setter = "set";
 
     /**
      * @param string $propertyName
@@ -24,12 +25,12 @@ trait AccessorsTrait {
      * @throws PropertyNotFoundException
      */
     public function __get(string $propertyName) {
-        $getterFuncName = self::$getter . ucfirst($propertyName);
-        if (method_exists($this, $getterFuncName)) {// getter
+        $getterFuncName = self::$_getter . ucfirst($propertyName);
+        if (method_exists($this, $getterFuncName)) {// get{PropertyName}
             return $this->$getterFuncName();
         }
-        $isFuncName = self::$is . ucfirst($propertyName);
-        if (method_exists($this, $isFuncName)) {// is
+        $isFuncName = self::$_is . ucfirst($propertyName);
+        if (method_exists($this, $isFuncName)) {// is{PropertyName}
             return $this->$isFuncName();
         }
         if (property_exists($this, $propertyName)) {
@@ -48,8 +49,8 @@ trait AccessorsTrait {
      * @throws PropertyNotFoundException
      */
     public function __set(string $propertyName, $value) {
-        $setterFuncName = self::$setter . ucfirst($propertyName);
-        if (method_exists($this, $setterFuncName)) {// setter
+        $setterFuncName = self::$_setter . ucfirst($propertyName);
+        if (method_exists($this, $setterFuncName)) {// set{PropertyName}
             $this->$setterFuncName($value);
             return;
         }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace jp\mcbe\accessors;
 
 use Exception;
+use function get_class;
 
 /**
  * Class PropertyNotFoundException
