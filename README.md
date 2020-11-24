@@ -24,7 +24,7 @@ projects:
     icon: ""
     libs:
       - src: fuyutsuki/accessors-trait/accessors-trait
-        version: 0.2.0
+        version: 0.4.0
 ...
 ```
 
@@ -44,30 +44,34 @@ use jp\mcbe\accessors\AccessorsTrait;
  * @package hoge\huga
  * 
  * @property string $varStr
- * @property-read string $_valStr
+ * @property-read string $valStr
  */
 class Foobar {
 
   use AccessorsTrait;
 
   private string $varStr = "private var";
-  private string $_valStr = "private val";
+  private string $valStr = "private val";
+
+  public function setVarStr(string $value) {
+    $this->varStr = $value;
+  }
 
 }
 
 $foobar = new Foobar();
 
-$foobar->varStr = "var example";// calls var setter
+$foobar->varStr = "var example";// var variable must implement setter
 var_dump($foobar->varStr);// if no getter, simply return the value of the property
 
-// $foobar->_valStr = "val example";
+// $foobar->valStr = "val example";
 // CanNotAccessPropertyException
-var_dump($foobar->_valStr);
+var_dump($foobar->valStr);
 
 /**
  * Output:
  * 
  * string(11) "var example"
- * string(11) "val example"
+ * string(11) "private val"
  */
 ```
