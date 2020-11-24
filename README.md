@@ -43,28 +43,31 @@ use jp\mcbe\accessors\AccessorsTrait;
  * Class Foobar
  * @package hoge\huga
  * 
- * @property string $str
+ * @property string $varStr
+ * @property-read string $_valStr
  */
 class Foobar {
 
   use AccessorsTrait;
 
-  private string $str = "default str";
-
-  public function setStr(string $value) {
-    $this->str = "[prefix] " . $value;
-  }
+  private string $varStr = "private var";
+  private string $_valStr = "private val";
 
 }
 
 $foobar = new Foobar();
 
-$foobar->str = "example";// calls setter
-var_dump($foobar->str);// if no getter, simply return the value of the property
+$foobar->varStr = "var example";// calls var setter
+var_dump($foobar->varStr);// if no getter, simply return the value of the property
+
+// $foobar->_valStr = "val example";
+// CanNotAccessPropertyException
+var_dump($foobar->_valStr);
 
 /**
  * Output:
  * 
- * string(7) "[prefix] example"
+ * string(11) "var example"
+ * string(11) "val example"
  */
 ```

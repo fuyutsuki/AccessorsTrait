@@ -7,6 +7,7 @@ namespace jp\mcbe\accessors;
 use function get_parent_class;
 use function method_exists;
 use function property_exists;
+use function substr;
 use function ucfirst;
 
 /**
@@ -22,7 +23,7 @@ trait AccessorsTrait {
     /**
      * @param string $propertyName
      * @return mixed
-     * @throws PropertyNotFoundException
+     * @throws CanNotAccessPropertyException
      */
     public function __get(string $propertyName) {
         $getterFuncName = self::$_getter . ucfirst($propertyName);
@@ -40,13 +41,13 @@ trait AccessorsTrait {
         if ($parent !== false) {
             return $parent::__get($propertyName);
         }
-        throw new PropertyNotFoundException($this, $propertyName);
+        throw new CanNotAccessPropertyException($this, $propertyName);
     }
 
     /**
      * @param string $propertyName
      * @param mixed $value
-     * @throws PropertyNotFoundException
+     * @throws CanNotAccessPropertyException
      */
     public function __set(string $propertyName, $value) {
         $setterFuncName = self::$_setter . ucfirst($propertyName);
@@ -54,7 +55,7 @@ trait AccessorsTrait {
             $this->$setterFuncName($value);
             return;
         }
-        if (property_exists($this, $propertyName)) {
+        if (property_exists($this, $propertyName) && substr($propertyName, 0, 1) !== "_") {// not val
             $this->$propertyName = $value;
             return;
         }
@@ -63,7 +64,7 @@ trait AccessorsTrait {
             $parent::__set($propertyName);
             return;
         }
-        throw new PropertyNotFoundException($this, $propertyName);
+        throw new CanNotAccessPropertyException($this, $propertyName);
     }
 
 }

@@ -8,13 +8,13 @@ use Exception;
 use function get_class;
 
 /**
- * Class PropertyNotFoundException
+ * Class CanNotAccessPropertyException
  * @package jp\mcbe\accessors
  */
-class PropertyNotFoundException extends Exception {
+class CanNotAccessPropertyException extends Exception {
 
     public function __construct(object $class, string $propertyName) {
-        parent::__construct("property not found: " . get_class($class) . "->{$propertyName}");
+        parent::__construct("error: cannot access '{$propertyName}': it is protected or private in " . get_class($class));
     }
 
 }
