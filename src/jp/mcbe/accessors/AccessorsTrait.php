@@ -7,7 +7,6 @@ namespace jp\mcbe\accessors;
 use function get_parent_class;
 use function method_exists;
 use function property_exists;
-use function substr;
 use function ucfirst;
 
 /**
@@ -53,10 +52,6 @@ trait AccessorsTrait {
         $setterFuncName = self::$_setter . ucfirst($propertyName);
         if (method_exists($this, $setterFuncName)) {// set{PropertyName}
             $this->$setterFuncName($value);
-            return;
-        }
-        if (property_exists($this, $propertyName) && substr($propertyName, 0, 1) !== "_") {// not val
-            $this->$propertyName = $value;
             return;
         }
         $parent = get_parent_class();
