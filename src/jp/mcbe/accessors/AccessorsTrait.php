@@ -15,9 +15,12 @@ use function ucfirst;
  */
 trait AccessorsTrait {
 
-    private static string $_getter = "get";
-    private static string $_is = "is";
-    private static string $_setter = "set";
+    /** @var string */
+    private static $_getter = "get";
+    /** @var string */
+    private static $_is = "is";
+    /** @var string */
+    private static $_setter = "set";
 
     /**
      * @param string $propertyName
