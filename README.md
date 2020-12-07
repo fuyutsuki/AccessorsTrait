@@ -23,7 +23,7 @@ projects:
     path: ""
     icon: ""
     libs:
-      - src: fuyutsuki/accessors-trait/accessors-trait
+      - src: fuyutsuki/AccessorsTrait/accessors-trait
         version: 0.4.0
 ...
 ```
