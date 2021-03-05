@@ -1,8 +1,7 @@
 name: accessors-trait
 antigen: jp\mcbe\accessors
-version: 0.4.1
+version: 1.0.0
 php:
-  - 7.4
   - 8.0
 author: yuko fuyutsuki
 description: A micro composer library that provides kotlin-like getter/setter

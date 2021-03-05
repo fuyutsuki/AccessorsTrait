@@ -9,5 +9,20 @@
             "email": "yukofuyutsuki@gmail.com"
         }
     ],
-    "require": {}
+    "scripts": {
+        "test": [
+            "./vendor/bin/phpunit -v tests/"
+        ]
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "": ["src"]
+        }
+    }
 }
